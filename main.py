@@ -162,7 +162,6 @@ class DeploymentManager:
 
             # Full path to the Python interpreter and log file
             PYTHON_INTERPRETER="/opt/{script_name}/venv/bin/python3"
-            LOG_FILE="/opt/{script_name}/script.log"
 
             # Create logs directory if it doesn't exist
             mkdir -p /opt/{script_name}/logs
@@ -170,7 +169,7 @@ class DeploymentManager:
             # Run the Python script within the virtual environment and log output
             cd /opt/{script_name}
             source venv/bin/activate
-            $PYTHON_INTERPRETER /opt/{script_name}/main.py >> /opt/{script_name}/logs/script.log 2>&1
+            $PYTHON_INTERPRETER /opt/{script_name}/main.py &
             """
             # Write the file with Unix line endings
             runner_path = os.path.join(script_path, "run_script.sh")
